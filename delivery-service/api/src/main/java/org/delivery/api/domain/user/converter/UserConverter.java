@@ -24,7 +24,7 @@ public class UserConverter {
                             .address(request.getAddress())
                             .build();
                 })
-                .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT, "UserRegisterRequest Null"));
+                .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT, "User Register Request Null"));
     }
 
     public UserResponse toResponse(UserEntity newEntity) {

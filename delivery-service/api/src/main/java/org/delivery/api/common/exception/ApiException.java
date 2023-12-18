@@ -1,7 +1,6 @@
 package org.delivery.api.common.exception;
 
 import lombok.Getter;
-import org.delivery.api.common.error.ErrorCode;
 import org.delivery.api.common.error.errorCodeIfs;
 
 @Getter
