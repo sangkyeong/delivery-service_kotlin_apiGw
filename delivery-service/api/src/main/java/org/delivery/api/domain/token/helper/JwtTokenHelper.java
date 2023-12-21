@@ -44,8 +44,8 @@ public class JwtTokenHelper implements TokenHelper {
 
         var jwtToken = Jwts.builder()
                 .signWith(key, SignatureAlgorithm.HS256)
-                .setClaims(data)
-                .setExpiration(expiredAt)
+                .claims(data)
+                .expiration(expiredAt)
                 .compact();
 
         return TokenDto.builder()
@@ -68,8 +68,8 @@ public class JwtTokenHelper implements TokenHelper {
 
         var jwtToken = Jwts.builder()
                 .signWith(key, SignatureAlgorithm.HS256)
-                .setClaims(data)
-                .setExpiration(expiredAt)
+                .claims(data)
+                .expiration(expiredAt)
                 .compact();
 
         return TokenDto.builder()
