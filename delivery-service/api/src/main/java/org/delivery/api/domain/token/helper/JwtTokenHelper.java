@@ -3,6 +3,7 @@ package org.delivery.api.domain.token.helper;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
 import org.delivery.api.common.error.TokenErrorCode;
@@ -12,6 +13,7 @@ import org.delivery.api.domain.token.model.TokenDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.crypto.SecretKey;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -30,6 +32,11 @@ public class JwtTokenHelper implements TokenHelper {
     @Value("${token.refresh-token.plus-hour}")
     private Long refreshTokenPlusHour;
 
+    private SecretKey getSigningKey() {
+        byte[] keyBytes = Decoders.BASE64.decode(secretKey);
+        return Keys.hmacShaKeyFor(keyBytes);
+    }
+
     @Override
     public TokenDto issueAccessToken(Map<String, Object> data) {
         var expiredLocalDateTime = LocalDateTime.now().plusHours(accessTokenPlusHour);
@@ -40,10 +47,10 @@ public class JwtTokenHelper implements TokenHelper {
                 ).toInstant()
         );
 
-        var key = Keys.hmacShaKeyFor(secretKey.getBytes());
+        //var key = Keys.hmacShaKeyFor(secretKey.getBytes());
 
         var jwtToken = Jwts.builder()
-                .signWith(key, SignatureAlgorithm.HS256)
+                .signWith(getSigningKey())
                 .claims(data)
                 .expiration(expiredAt)
                 .compact();
@@ -64,10 +71,10 @@ public class JwtTokenHelper implements TokenHelper {
                 ).toInstant()
         );
 
-        var key = Keys.hmacShaKeyFor(secretKey.getBytes());
+       // var key = Keys.hmacShaKeyFor(secretKey.getBytes());
 
         var jwtToken = Jwts.builder()
-                .signWith(key, SignatureAlgorithm.HS256)
+                .signWith(getSigningKey())
                 .claims(data)
                 .expiration(expiredAt)
                 .compact();
@@ -80,15 +87,15 @@ public class JwtTokenHelper implements TokenHelper {
 
     @Override
     public Map<String, Object> validationTokenWithThrow(String token) {
-        var key = Keys.hmacShaKeyFor(secretKey.getBytes());
+        //var key = Keys.hmacShaKeyFor(secretKey.getBytes());
 
         var parser = Jwts.parser()
-                .setSigningKey(key)
+                .setSigningKey(getSigningKey())
                 .build();
 
         try {
-            var result = parser.parseClaimsJwt(token);
-            return new HashMap<String, Object>(result.getBody());
+            var result = parser.parseUnsecuredClaims(token);
+            return new HashMap<String, Object>(result.getPayload());
 
         }catch (
             Exception e

@@ -25,7 +25,7 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
 
     private final TokenBusiness tokenBusiness;
 
-    /*@Override
+    @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         log.info("Authorization Interceptor url : {}", request.getRequestURI());
 
@@ -49,6 +49,6 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
             return true;
         }
         throw new ApiException(ErrorCode.BAD_REQUEST, "인증실패");
-    }*/
+    }
 
 }
