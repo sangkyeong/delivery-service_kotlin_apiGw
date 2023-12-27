@@ -69,3 +69,18 @@ CREATE TABLE `user_order_menu` (
   KEY `idx_user_order_id` (`user_order_id`),
   KEY `idx_store_order_id` (`store_menu_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin
+
+<store_user>
+CREATE TABLE `store_user` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `store_id` bigint NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_bin NOT NULL,
+  `password` varchar(100) COLLATE utf8mb4_bin NOT NULL,
+  `status` varchar(50) COLLATE utf8mb4_bin NOT NULL,
+  `role` varchar(50) COLLATE utf8mb4_bin NOT NULL,
+  `registered_at` datetime DEFAULT NULL,
+  `unregistered_at` datetime DEFAULT NULL,
+  `last_login_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_store_id` (`store_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin

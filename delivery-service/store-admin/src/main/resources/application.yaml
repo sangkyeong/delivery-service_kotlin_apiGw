@@ -1,0 +1,19 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: store-admin
+
+  jpa:
+    show-sql: true
+    properties:
+      format_sql: true
+      dialect: package org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl_auto: validate
+  datasource:
+    url: jdbc:mysql://localhost:33068/delivery?useSSL=false&useUnicode=true&PublicKeyRetrieval=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 0805
