@@ -33,7 +33,7 @@ public class JwtTokenHelper implements TokenHelper {
     private Long refreshTokenPlusHour;
 
     private SecretKey getSigningKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(secretKey);
+        byte[] keyBytes = secretKey.getBytes();
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
@@ -71,7 +71,7 @@ public class JwtTokenHelper implements TokenHelper {
                 ).toInstant()
         );
 
-       // var key = Keys.hmacShaKeyFor(secretKey.getBytes());
+       //var key = Keys.hmacShaKeyFor(secretKey.getBytes());
 
         var jwtToken = Jwts.builder()
                 .signWith(getSigningKey())
@@ -87,14 +87,14 @@ public class JwtTokenHelper implements TokenHelper {
 
     @Override
     public Map<String, Object> validationTokenWithThrow(String token) {
-        //var key = Keys.hmacShaKeyFor(secretKey.getBytes());
+       // var key = Keys.hmacShaKeyFor(secretKey.getBytes());
 
         var parser = Jwts.parser()
-                .setSigningKey(getSigningKey())
+                .verifyWith(getSigningKey())
                 .build();
 
         try {
-            var result = parser.parseUnsecuredClaims(token);
+            var result = parser.parseSignedClaims(token);
             return new HashMap<String, Object>(result.getPayload());
 
         }catch (
