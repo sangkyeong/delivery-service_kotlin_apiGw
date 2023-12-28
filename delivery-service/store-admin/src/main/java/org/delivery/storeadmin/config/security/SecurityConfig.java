@@ -7,6 +7,8 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 import java.util.List;
@@ -15,10 +17,11 @@ import java.util.List;
 @EnableWebSecurity  //security 활성화
 public class SecurityConfig {
 
-    private List<String> SWAGER = List.of(
-            "/swagger-ii.html",
+    private List<String> SWAGGER = List.of(
+            "/swagger-ui.html",
             "/swagger-ui/**",
-            "/v3/api-docs/**"
+            "/v3/api-docs/**",
+            "/open-api/**"
     );
     @Bean
     public SecurityFilterChain filterChain(
@@ -32,12 +35,18 @@ public class SecurityConfig {
                     ).permitAll()  //resource에 대해서는 모든 요청 허용
 
                    //swagger는 인증없이 통과
-                    .requestMatchers(SWAGER.toArray(new String[0])).permitAll()
+                    .requestMatchers(SWAGGER.toArray(new String[0])).permitAll()
 
                     //그 외 모든 요청은 인증사용
                     .anyRequest().authenticated();
             })
             .formLogin(Customizer.withDefaults());
         return httpSecurity.build();
+    }
+    
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        //해시 방식으로 암호화
+        return new BCryptPasswordEncoder();        
     }
 }

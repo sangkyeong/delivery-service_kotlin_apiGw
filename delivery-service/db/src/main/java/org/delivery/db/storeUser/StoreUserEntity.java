@@ -22,7 +22,7 @@ import java.time.LocalDateTime;
 @Table(name = "store_user")
 public class StoreUserEntity extends BaseEntity {
    @Column(nullable = false)
-    private Long StoreId;
+    private Long storeId;
 
     @Column(length = 100, nullable = false)
     private String email;

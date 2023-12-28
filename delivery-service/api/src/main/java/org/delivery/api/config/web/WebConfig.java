@@ -28,7 +28,7 @@ public class WebConfig implements WebMvcConfigurer {
             "/error"
     );
 
-    private List<String> SWEGGER = List.of(
+    private List<String> SWAGGER = List.of(
             "/swagger-ui.html",
             "/swagger-ui/**",
             "/v3/api-docs/**"
@@ -38,7 +38,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(authorizationInterceptor)
                 .excludePathPatterns(OPEN_API)
                 .excludePathPatterns(DEFAULT_EXCLUDE)
-                .excludePathPatterns(SWEGGER)
+                .excludePathPatterns(SWAGGER)
                 ;
     }
 
