@@ -14,6 +14,9 @@ import java.util.List;
 @NoArgsConstructor
 public class UserOrderRequest {
 
+    @NotNull
+    private Long storeId;
+
     //주문
     //특정사용자가, 특정메뉴를 주문
     //특정사용자 = 로그인된 세션에 들어있는 사용자

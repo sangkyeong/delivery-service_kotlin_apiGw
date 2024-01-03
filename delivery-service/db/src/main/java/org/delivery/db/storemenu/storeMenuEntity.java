@@ -40,6 +40,4 @@ public class storeMenuEntity extends BaseEntity {
     private int likeCount;
 
     private int sequence;
-
-
 }
