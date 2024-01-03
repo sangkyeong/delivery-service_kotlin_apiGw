@@ -11,6 +11,7 @@ import org.delivery.api.domain.userOrder.controller.model.UserOrderDetailRespons
 import org.delivery.api.domain.userOrder.controller.model.UserOrderRequest;
 import org.delivery.api.domain.userOrder.controller.model.UserOrderResponse;
 import org.delivery.api.domain.userOrder.converter.UserOrderConverter;
+import org.delivery.api.domain.userOrder.producer.UserOrderProducer;
 import org.delivery.api.domain.userOrder.service.UserOrderService;
 import org.delivery.api.domain.userOrderMenu.converter.UserOrderMenuConverter;
 import org.delivery.api.domain.userOrderMenu.service.UserOrderMenuService;
@@ -32,6 +33,7 @@ public class UserOrderBusiness {
     private final StoreService storeService;
     private final StoreMenuConverter storeMenuConverter;
     private final StoreConverter storeConverter;
+    private final UserOrderProducer userOrderProducer;
 
     //1. 사용자, 메뉴 id
     //2. userOrder 생성
@@ -59,6 +61,9 @@ public class UserOrderBusiness {
         userOrderMenuEntityList.forEach(it -> {
             userOrderMenuService.order(it);
         });
+        
+        //비동기로 가맹점에 주문알리기
+        userOrderProducer.sendOrder(newUserOrderEntity);
 
 
         //response
