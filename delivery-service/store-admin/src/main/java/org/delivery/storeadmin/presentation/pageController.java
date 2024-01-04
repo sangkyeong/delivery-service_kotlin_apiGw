@@ -10,7 +10,7 @@ public class pageController {
 
     @RequestMapping(path = {"", "/main"})
     public ModelAndView main2(){
-        return new ModelAndView("main");    //main.html로 연결
+        return new ModelAndView("display");    //main.html로 연결
     }
 
     @RequestMapping("/order")
