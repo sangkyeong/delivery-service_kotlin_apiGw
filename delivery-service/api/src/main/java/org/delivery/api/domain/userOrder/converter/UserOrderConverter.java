@@ -1,8 +1,9 @@
 package org.delivery.api.domain.userOrder.converter;
 
-import org.delivery.common.annotation.Converter;
 import org.delivery.api.domain.user.model.User;
 import org.delivery.api.domain.userOrder.controller.model.UserOrderResponse;
+import org.delivery.common.annotation.Converter;
+import org.delivery.db.store.StoreEntity;
 import org.delivery.db.storemenu.storeMenuEntity;
 import org.delivery.db.userOrder.UserOrderEntity;
 
@@ -14,7 +15,7 @@ public class UserOrderConverter {
 
     public UserOrderEntity toEntity(
             User user,
-            Long storeId,
+            StoreEntity storeEntity,
             List<storeMenuEntity> storeMenuEntityList
     ){
         var totalAmount = storeMenuEntityList.stream()
@@ -23,7 +24,7 @@ public class UserOrderConverter {
 
         return UserOrderEntity.builder()
                 .userId(user.getId())
-                .storeId(storeId)
+                .store(storeEntity)
                 .amount(totalAmount)
                 .build();
     }

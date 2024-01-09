@@ -7,11 +7,13 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.delivery.db.BaseEntity;
+import org.delivery.db.store.StoreEntity;
 import org.delivery.db.userOrder.enums.UserOrderStatus;
-import org.springframework.cglib.core.Local;
+import org.delivery.db.userOrderMenu.UserOrderMenuEntity;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -25,8 +27,9 @@ public class UserOrderEntity extends BaseEntity {
     @Column(nullable = false)
     private Long userId;
 
-    @Column(nullable = false)
-    private Long storeId;
+    @JoinColumn(nullable = false, name = "store_id")
+    @ManyToOne
+    private StoreEntity store;
 
     @Column(nullable = false, length = 50, columnDefinition = "varchar")
     @Enumerated(EnumType.STRING)
@@ -44,4 +47,7 @@ public class UserOrderEntity extends BaseEntity {
     private LocalDateTime deliveryStartedAt;
 
     private LocalDateTime receivedAt;
+
+    @OneToMany(mappedBy = "userOrder")            //userOrderEntity라는 곳에 맵핑
+    private List<UserOrderMenuEntity> userOrderMenuList;
 }
