@@ -1,10 +1,8 @@
 package org.delivery.db.userOrder;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.delivery.db.BaseEntity;
 import org.delivery.db.store.StoreEntity;
@@ -49,5 +47,8 @@ public class UserOrderEntity extends BaseEntity {
     private LocalDateTime receivedAt;
 
     @OneToMany(mappedBy = "userOrder")            //userOrderEntity라는 곳에 맵핑
+    @ToString.Exclude                               //UserOrderMenuEntity와 UserOrderEntity를 무한루프 돌기때문에
+                                                    //연관관계 컬럼 설정 시 해당 컬럼을 toString에 포함시키지 않는 @ToString.Exclude사용
+    @JsonIgnore
     private List<UserOrderMenuEntity> userOrderMenuList;
 }
