@@ -9,6 +9,8 @@ import org.delivery.storeadmin.domain.storeuser.converter.StoreUserConverter;
 import org.delivery.storeadmin.domain.storeuser.service.StoreUserService;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class StoreUserBusiness {
@@ -22,7 +24,7 @@ public class StoreUserBusiness {
     public StoreUserResponse register(
         StoreUserRegisterRequest request
     ){
-        var storeEntity = storeRepository.findFirstByNameAndStatusOrderByIdDesc(request.getStoreName(), StoreStatus.REGISTERED);
+        var storeEntity = Optional.ofNullable(storeRepository.findFirstByNameAndStatusOrderByIdDesc(request.getStoreName(), StoreStatus.REGISTERED));
 
         var entity = storeUserConverter.toEntity(request, storeEntity.get());
 

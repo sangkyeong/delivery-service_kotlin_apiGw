@@ -1,13 +1,6 @@
 package org.delivery.db.userOrder;
 
-import org.delivery.db.user.UserEntity;
-import org.delivery.db.userOrder.enums.UserOrderStatus;
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
-import java.util.Optional;
-
-public interface UserOrderRepository extends JpaRepository<UserOrderEntity, Long> {
+/*public interface UserOrderRepository extends JpaRepository<UserOrderEntity, Long> {
     
     //특정유저의 모든 주문
     //select * from user_order where user_id = ? and status = "REGISTERED" order by id desc
@@ -21,4 +14,4 @@ public interface UserOrderRepository extends JpaRepository<UserOrderEntity, Long
     Optional<UserOrderEntity> findAllByIdAndStatusAndUserId(Long id, UserOrderStatus status, Long userId);
 
     Optional<UserOrderEntity> findAllByIdAndUserId(Long id, Long userId);
-}
+}*/

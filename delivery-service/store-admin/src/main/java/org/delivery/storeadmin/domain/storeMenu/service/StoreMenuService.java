@@ -6,6 +6,8 @@ import org.delivery.db.storemenu.enums.StoreMenuStatus;
 import org.delivery.db.storemenu.storeMenuEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class StoreMenuService {
@@ -13,7 +15,7 @@ public class StoreMenuService {
     private final StoreMenuRepository storeMenuRepository;
 
     public storeMenuEntity getStoreMenuWithThrow(Long id){
-        return storeMenuRepository.findFirstByIdAndStatusOrderByIdDesc(id, StoreMenuStatus.REGISTERED)
-                .orElseThrow(() -> new RuntimeException("store menu not found"));
+        return Optional.ofNullable(storeMenuRepository.findFirstByIdAndStatusOrderByIdDesc(id, StoreMenuStatus.REGISTERED)
+        ).orElseThrow(() -> new RuntimeException("store menu not found"));
     }
 }

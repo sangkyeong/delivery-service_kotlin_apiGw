@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class AuthorizationService implements UserDetailsService {
@@ -20,9 +22,10 @@ public class AuthorizationService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         var storeUserEntity = storeUserService.getRegisterUser(username);
-        var storeEntity = storeRepository.findFirstByIdAndStatusOrderByIdDesc(
+        var storeEntity = Optional.ofNullable(storeRepository.findFirstByIdAndStatusOrderByIdDesc(
                 storeUserEntity.get().getStoreId(),
                 StoreStatus.REGISTERED
+            )
         );
         return storeUserEntity.map(it->{
             var userSession = UserSession.builder()
