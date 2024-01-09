@@ -1,9 +1,6 @@
 package org.delivery.api.common.exception;
 
-import lombok.Getter;
-import org.delivery.api.common.error.errorCodeIfs;
-
-@Getter
+/*@Getter
 public class ApiException extends RuntimeException implements ApiExceptionIfs{
 
     private final errorCodeIfs errorCodeIfs;
@@ -33,4 +30,4 @@ public class ApiException extends RuntimeException implements ApiExceptionIfs{
         this.errorCodeIfs = errorCodeIfs;
         this.errorDescription = errorDescription;
     }
-}
+}*/

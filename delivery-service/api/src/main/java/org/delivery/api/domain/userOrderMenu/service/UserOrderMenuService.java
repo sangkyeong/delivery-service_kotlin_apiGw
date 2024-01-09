@@ -1,8 +1,8 @@
 package org.delivery.api.domain.userOrderMenu.service;
 
 import lombok.RequiredArgsConstructor;
-import org.delivery.api.common.error.ErrorCode;
-import org.delivery.api.common.exception.ApiException;
+import org.delivery.common.error.ErrorCode;
+import org.delivery.common.exception.ApiException;
 import org.delivery.db.userOrderMenu.UserOrderMenuEntity;
 import org.delivery.db.userOrderMenu.UserOrderMenuRepository;
 import org.delivery.db.userOrderMenu.enums.UserOrderMenuStatus;

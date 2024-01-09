@@ -1,13 +1,6 @@
-package org.delivery.api.common.api;
+package org.delivery.common.api;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.delivery.api.common.error.ErrorCode;
-import org.delivery.api.common.error.errorCodeIfs;
-
-@Data
+/*@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -48,4 +41,4 @@ public class Result {
                 .resultDescription("성공")
                 .build();
     }
-}
+}*/

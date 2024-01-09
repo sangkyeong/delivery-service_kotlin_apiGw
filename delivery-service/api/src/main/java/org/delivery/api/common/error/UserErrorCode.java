@@ -1,9 +1,6 @@
 package org.delivery.api.common.error;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
-@AllArgsConstructor
+/*@AllArgsConstructor
 @Getter
 public enum UserErrorCode implements errorCodeIfs {
 
@@ -18,4 +15,4 @@ public enum UserErrorCode implements errorCodeIfs {
     private final Integer errorCode;
 
     private final String description;
-}
+}*/

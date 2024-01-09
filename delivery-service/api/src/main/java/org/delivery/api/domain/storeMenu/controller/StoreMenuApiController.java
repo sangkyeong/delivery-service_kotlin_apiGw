@@ -1,9 +1,9 @@
 package org.delivery.api.domain.storeMenu.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.delivery.api.common.api.Api;
 import org.delivery.api.domain.storeMenu.business.StoreMenuBusiness;
 import org.delivery.api.domain.storeMenu.controller.model.StoreMenuResponse;
+import org.delivery.common.api.Api;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

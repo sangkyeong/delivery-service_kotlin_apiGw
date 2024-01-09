@@ -2,7 +2,6 @@ package org.delivery.api.domain.userOrder.producer;
 
 import lombok.RequiredArgsConstructor;
 import org.delivery.api.common.rabbitmq.Producer;
-import org.delivery.common.message.model.UserOrderMessage;
 import org.delivery.db.userOrder.UserOrderEntity;
 import org.springframework.stereotype.Service;
 
@@ -19,9 +18,9 @@ public class UserOrderProducer {
     }
 
     public void sendOrder(Long userOrderId){
-        var message = UserOrderMessage.builder()
-                .userOrderId(userOrderId)
-                .build();
-        producer.producer(EXCHANGE, ROUTE_KEY, message);
+//        var message = UserOrderMessage.builder()
+//                .userOrderId(userOrderId)
+//                .build();
+//        producer.producer(EXCHANGE, ROUTE_KEY, message);
     }
 }
