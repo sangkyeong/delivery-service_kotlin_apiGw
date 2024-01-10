@@ -1,15 +1,6 @@
 package org.delivery.api.domain.userOrder.controller.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.delivery.db.userOrder.enums.UserOrderStatus;
-
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-
-@Data
+/*@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -30,4 +21,4 @@ public class UserOrderResponse {
     private LocalDateTime deliveryStartedAt;
 
     private LocalDateTime receivedAt;
-}
+}*/

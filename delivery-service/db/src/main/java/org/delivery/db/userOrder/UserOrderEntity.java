@@ -1,19 +1,6 @@
 package org.delivery.db.userOrder;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
-import lombok.*;
-import lombok.experimental.SuperBuilder;
-import org.delivery.db.BaseEntity;
-import org.delivery.db.store.StoreEntity;
-import org.delivery.db.userOrder.enums.UserOrderStatus;
-import org.delivery.db.userOrderMenu.UserOrderMenuEntity;
-
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.List;
-
-@Data
+/*@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
@@ -51,4 +38,4 @@ public class UserOrderEntity extends BaseEntity {
                                                     //연관관계 컬럼 설정 시 해당 컬럼을 toString에 포함시키지 않는 @ToString.Exclude사용
     @JsonIgnore
     private List<UserOrderMenuEntity> userOrderMenuList;
-}
+}*/
