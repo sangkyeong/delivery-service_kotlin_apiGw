@@ -1,29 +1,6 @@
 package org.delivery.api.domain.userOrder.business;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.delivery.api.domain.store.converter.StoreConverter;
-import org.delivery.api.domain.store.service.StoreService;
-import org.delivery.api.domain.storeMenu.converter.StoreMenuConverter;
-import org.delivery.api.domain.storeMenu.service.StoreMenuService;
-import org.delivery.api.domain.user.model.User;
-import org.delivery.api.domain.userOrder.controller.model.UserOrderDetailResponse;
-import org.delivery.api.domain.userOrder.controller.model.UserOrderRequest;
-import org.delivery.api.domain.userOrder.controller.model.UserOrderResponse;
-import org.delivery.api.domain.userOrder.converter.UserOrderConverter;
-import org.delivery.api.domain.userOrder.producer.UserOrderProducer;
-import org.delivery.api.domain.userOrder.service.UserOrderService;
-import org.delivery.api.domain.userOrderMenu.converter.UserOrderMenuConverter;
-import org.delivery.api.domain.userOrderMenu.service.UserOrderMenuService;
-import org.delivery.common.annotation.Business;
-import org.delivery.db.userOrderMenu.UserOrderMenuEntity;
-import org.delivery.db.userOrderMenu.enums.UserOrderMenuStatus;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
-@Business
+/*@Business
 @RequiredArgsConstructor
 @Slf4j
 public class UserOrderBusiness {
@@ -110,7 +87,7 @@ public class UserOrderBusiness {
         //주문1건씩 처리
         var userOrderDtailResponseList = userOrderEntityList.stream().map( userOrderEntity ->{
 
-            /*
+            *//*
                 log.info("사용자의 주문정보 : {}", it);
                 try {
                     var jsonString = objectMapper.writeValueAsString(it);
@@ -118,7 +95,7 @@ public class UserOrderBusiness {
                 } catch (JsonProcessingException e) {
                     log.info("", e);
                 }
-            */
+            *//*
 
             //사용자가 주문한 메뉴
 
@@ -176,4 +153,4 @@ public class UserOrderBusiness {
                 .storeResponse(storeConverter.toResponse(storeEntity))
                 .build();
     }
-}
+}*/
