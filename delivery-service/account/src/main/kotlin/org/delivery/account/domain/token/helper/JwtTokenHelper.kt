@@ -2,7 +2,6 @@ package org.delivery.account.domain.token.helper
 
 import io.jsonwebtoken.ExpiredJwtException
 import io.jsonwebtoken.Jwts
-import io.jsonwebtoken.SignatureAlgorithm
 import io.jsonwebtoken.security.Keys
 import io.jsonwebtoken.security.SignatureException
 import org.delivery.account.domain.token.ifs.TokenHelper
@@ -11,7 +10,6 @@ import org.delivery.common.error.TokenErrorCode
 import org.delivery.common.exception.ApiException
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
-import java.lang.Exception
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.util.*
@@ -84,7 +82,7 @@ class JwtTokenHelper: TokenHelper {
 
         return try {
             val result = token?.let { parser.parseEncryptedClaims(it) }
-            HashMap(result?.payload)
+            HashMap(result!!.payload)
         }catch (e: Exception){
             when(e){
 

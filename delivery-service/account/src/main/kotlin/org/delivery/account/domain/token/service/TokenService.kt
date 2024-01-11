@@ -24,7 +24,7 @@ class TokenService(
         return tokenHelper.issueRefreshToken(data)
     }
 
-    fun validationToken(token: String)
+    fun validationToken(token: String?)
     : Long?{
         /*
         requireNotNull(token)

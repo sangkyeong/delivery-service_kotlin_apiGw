@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.Objects;
 
-/*@Service
+@Service
 @RequiredArgsConstructor
 public class TokenService {
 
@@ -35,5 +35,5 @@ public class TokenService {
 
         return Long.parseLong(userId.toString());
     }
-}*/
+}
 
