@@ -18,7 +18,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-@Component
+/*@Component
 public class JwtTokenHelper implements TokenHelper {
 
     @Value("${token.secret.key}")
@@ -110,4 +110,4 @@ public class JwtTokenHelper implements TokenHelper {
             }
         }
     }
-}
+}*/

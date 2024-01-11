@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-@Data
+/*@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -15,4 +15,4 @@ public class TokenDto {
 
     private String token;
     private LocalDateTime exfiredAt;
-}
+}*/
