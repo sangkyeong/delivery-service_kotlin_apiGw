@@ -81,7 +81,9 @@ class JwtTokenHelper: TokenHelper {
             .build()
 
         return try {
-            val result = token?.let { parser.parseEncryptedClaims(it) }
+            val result = token?.let {
+                parser.parseSignedClaims(it)
+            }
             HashMap(result!!.payload)
         }catch (e: Exception){
             when(e){
