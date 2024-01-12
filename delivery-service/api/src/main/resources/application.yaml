@@ -1,6 +1,15 @@
 server:
   name: delivery-api
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
 spring:
   rabbitmq:
     host: localhost
@@ -28,3 +37,8 @@ token:
     plus-hour: 1
   refresh-token:
     plus-hour: 12
+
+logging:
+  config: classpath:logback-dev.xml
+  file:
+      name: logfile.log

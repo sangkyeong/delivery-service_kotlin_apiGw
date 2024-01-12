@@ -70,7 +70,7 @@
         </encoder>
     </appender>
 
-    <root level="debug">                <!--기록할 로그 레벨 설정-->
+    <root level="info">                <!--기록할 로그 레벨 설정-->
         <appender-ref ref="STDOUT" />   <!-- 생성할 로그 방식 설정 - 콘솔기록형 / <appender name="STDOUT"을 실행-->
         <appender-ref ref="FILE" />     <!-- 생성할 로그 방식 설정 - 파일기록형-->
         <appender-ref ref="STASH" />
