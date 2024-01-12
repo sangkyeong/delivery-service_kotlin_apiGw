@@ -1,0 +1,42 @@
+<configuration>
+<!--https://logback.qos.ch/manual/ 공식 logback메뉴얼-->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <!--
+            PatternLayoutEncoder.java - PatternLayout.java
+            에서 만들어져 있는 정보 이름들을 아래 패턴에 추가하면 로그를 볼 수 있다.
+        -->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%class] [%method] [%line]  %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- RollingFileAppender 추가-->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logFile.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <!--파일 생성 패턴설정-->
+            <fileNamePattern>logFile.%d{yyyy-MM-dd_HH_mm}.log.zip</fileNamePattern>
+
+            <!-- keep 30 days' worth of history capped at 3GB total size -->
+
+            <!--설정시간이 지나면 기존 파일은 삭제-->
+            <maxHistory>3</maxHistory>
+            <totalSizeCap>3GB</totalSizeCap>
+
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%class] [%method] [%line]  %msg %n</pattern>
+        </encoder>
+    </appender>
+
+
+
+    <root level="debug">                <!--기록할 로그 레벨 설정-->
+        <appender-ref ref="STDOUT" />   <!-- 생성할 로그 방식 설정 - 콘솔기록형-->
+        <appender-ref ref="FILE" />     <!-- 생성할 로그 방식 설정 - 파일기록형-->
+    </root>
+</configuration>
