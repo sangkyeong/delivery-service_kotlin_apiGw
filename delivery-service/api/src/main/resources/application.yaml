@@ -6,6 +6,12 @@ management:
     export:
       prometheus:
         enabled: true
+      statsd:
+        enabled: true
+        flavor: telegraf
+        polling-frequency: 5s
+        host: localhost
+        port: 8125
   endpoints:
     web:
       exposure:

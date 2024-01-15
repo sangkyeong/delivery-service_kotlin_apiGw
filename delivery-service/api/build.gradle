@@ -65,8 +65,8 @@ dependencies {
     // Micrometer Registry Prometheus - https://mvnrepository.com/artifact/io.micrometer/micrometer-registry-prometheus
     implementation 'io.micrometer:micrometer-registry-prometheus:1.12.1'
 
-
-
+    //Micrometer statsd
+    implementation 'io.micrometer:micrometer-registry-statsd:1.11.0'
 }
 
 test {
